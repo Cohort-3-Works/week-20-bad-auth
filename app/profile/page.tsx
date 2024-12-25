@@ -30,14 +30,16 @@ import axios from "axios";
 // what should we do then we should use server components
 
 export default async function Profile() {
-  // const res = axios.get("http://localhost:3000/api/profile", {
-  //   headers: {
-  //     authorization: localStorage.getItem("token"),
-  //   },
-  // });
+  const res = await axios.get("http://localhost:3000/api/profile", {
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  });
 
-  // const profilePicture = res.data.avatarUrl;
-  const profilePicture = "https://pic.png";
+  const profilePicture = res.data.avatarUrl;
+  // const profilePicture = "https://pic.png";
 
   return <div>{profilePicture}</div>;
 }
+
+// now this says localstorage in undefined because it is a server side component
